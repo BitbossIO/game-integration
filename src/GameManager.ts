@@ -78,13 +78,10 @@ export abstract class GameManager {
     }
 
     /* 
-     * Sends an array of bets to the parent app
+     * Sends the bet details to the parent app
      */
-    public placeBet(betRequests: BetRequest[]): void {
-        // Send the array of bets to the parent app
-        if (betRequests.length > 0) {
-            this.sendMessage("placeBet", JSON.stringify(betRequests));
-        }
+    public placeBet(betRequest: BetRequest): void {
+        this.sendMessage("placeBet", JSON.stringify(betRequest));
     }
 
     /* Process the bet results received in the "betResult" event (see bottom of this file)
