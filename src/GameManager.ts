@@ -88,7 +88,7 @@ export abstract class GameManager {
      * Converts the bet results into data that the game ui understands
      * The game UI logic calls this method to get 
      */
-    abstract processBetResults(results: BetResult[]): any;
+    abstract processBetResults(results: BetResult[], gameSpecific: any): any;
 
     /*
      * Retrieves history data from parent app.  Derived class can override to customize the
