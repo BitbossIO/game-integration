@@ -1,0 +1,17 @@
+{
+  "name": "@bitboss/game-integration",
+  "version": "1.0.0",
+  "description": "",
+  "main": "lib/GameManager.js",
+  "scripts": {
+    "prepare": "npm run build",
+    "build": "tsc"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {
+    "tslint": "^5.12.0",
+    "typescript": "^3.2.2"
+  }
+}
