@@ -7,6 +7,11 @@
     "prepare": "npm run build",
     "build": "tsc"
   },
+  "homepage": "https://www.bitboss.io",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/BitbossIO/game-integration"
+  },
   "author": "",
   "license": "ISC",
   "dependencies": {},
