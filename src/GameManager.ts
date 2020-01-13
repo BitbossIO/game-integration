@@ -80,8 +80,13 @@ export abstract class GameManager {
     /* 
      * Sends the bet details to the parent app
      */
-    public placeBet(betRequest: BetRequest): void {
-        this.sendMessage("placeBet", JSON.stringify(betRequest));
+    public async placeBet(betRequest: BetRequest): Promise<boolean> {
+        if (betRequest.b.length > 0) {
+            const response = await this.sendMessage("placeBet", JSON.stringify(betRequest));
+            return response.confirm;
+        } else {
+            return false;
+        }
     }
 
     /* Process the bet results received in the "betResult" event (see bottom of this file)
