@@ -10,8 +10,9 @@ export interface BetRequest {
 }
 
 export interface BetResult {
-    d: any; // game instance id
-    p: number; // payout
+    r: any; // results from game service
+    d: string; // game instance id
+    p: number; // total payout
     gameSpecific: any; //A game service can pass back raw json data to game client
 }
 
