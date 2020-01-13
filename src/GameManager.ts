@@ -10,8 +10,9 @@ export interface BetRequest {
 }
 
 export interface BetResult {
-    draw: any;
-    payout: number;
+    d: any; // game instance id
+    p: number; // payout
+    gameSpecific: any; //A game service can pass back raw json data to game client
 }
 
 export interface BetHistoryItem {
@@ -89,11 +90,12 @@ export abstract class GameManager {
         }
     }
 
-    /* Process the bet results received in the "betResult" event (see bottom of this file)
-     * Converts the bet results into data that the game ui understands
-     * The game UI logic calls this method to get 
+    /* Process the bet results received in the "betResult" event
+     * The game UI logic calls the implementation of this method to get bet
+     * result data that the game ui understands.
+     * BetResult.gameSpecific is used to pass game specific content from a game service
      */
-    abstract processBetResults(results: BetResult[], gameSpecific: any): any;
+    abstract processBetResults(result: BetResult, gameSpecific: any): any;
 
     /*
      * Retrieves history data from parent app.  Derived class can override to customize the
