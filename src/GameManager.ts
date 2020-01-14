@@ -35,7 +35,7 @@ export interface BetHistory {
     assetName: string;
     betRequest: BetHistoryRequest;
     betPayout: number; // Total payout
-    betResult: any; // null
+    betResult: BetResult; // null if result is still pending
 }
 
 export interface BetConfig {
