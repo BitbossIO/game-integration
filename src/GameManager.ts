@@ -141,17 +141,23 @@ export abstract class GameManager {
     }
 
     /* 
-    * Return the value converted to an integer in seconds
-    */
-    protected getDateValueInSeconds(value: any): number {
+     * Return a proper date value, converting from UTC if flagged
+     */
+    protected normalizeDate(value: any, convertFromUTCToLocal: boolean): number {
         let intValue: number;
         intValue = parseInt(value);
 
-        // If the value contains ms convert to seconds
-        if (value > 1000000000000)
-            return intValue / 1000;
-        else
-            return intValue;
+        // If the value doesn't have milliseconds then convert to milliseconds
+        if (value <= 1000000000000) {
+            intValue = intValue * 1000;
+        }
+
+        // Convert from UTC?
+        if (convertFromUTCToLocal) {
+            intValue += new Date().getTimezoneOffset() * 60 * 1000;
+        }
+
+        return intValue;
     }
 
     /**
