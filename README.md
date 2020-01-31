@@ -46,6 +46,9 @@ processBetResults | This method must be overridden, it's used in the callback wh
 getHistory | Bet history for each bet placed and the corresponding results
 saveFavoriteBets | Save favorite bet information in the mobile app local storage
 getFavoriteBets | Retreive any stored favorite bets
+saveGameState | Saves game specific state data to local storage
+getGameState | Retrieves game state data from local storage
+clearGameState | Clears all game state data for the game
 exitGame | Call this method from the game UI to exit back to the BitBoss app
 
 
