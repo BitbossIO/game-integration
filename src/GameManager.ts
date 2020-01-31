@@ -131,6 +131,32 @@ export abstract class GameManager {
         return favBets;
     }
 
+    /* 
+     * Sends game state to the parent, can be anything not stored on blockchain
+     * that is ok if lost (for example due to the app being uninstalled)
+     */
+    public saveGameState(state: any) {
+        if (state) {
+            this.sendMessage("saveGameState", state);
+        }
+    }
+
+    /* 
+     * Retrieves game state
+     */
+    public async getGameState(): Promise<any> {
+        const state: any = await this.sendMessage("getGameState", null);
+        return state;
+    }
+
+    /* 
+     * Clears out all game state
+     */
+    public clearGameState() {
+        this.sendMessage("clearGameState", {});
+    }
+
+
     /*
      * Called by the game screen exit/home button to tell the parent app
      * to hide the game
