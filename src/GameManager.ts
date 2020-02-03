@@ -3,24 +3,25 @@ export interface BetItem {
     b: number[];// bet details
 }
 
-// Used to send request back to parent
+// Used to place bets by sending request to parent app
 export interface BetRequest {
     d: string;  // game instance id
     b: BetItem[];
 }
 
+// Results of a bet including cards/dice/wheel/ball result and the payout
 export interface BetResult {
-    r: any; // results from game service
+    r: any; // results from game service, ex cards drawn from deck
     d: string; // game instance id
     p: number; // total payout
-    gameSpecific: any; //A game service can pass back raw json data to game client
+    gs: any; //A game service can pass back raw json data to game client
 }
 
 export interface BetHistoryItem {
-    q: number;  // bet quantity
+    q: number;  // bet quantity in fiat
+    qc: number;  // bet quantity in crypto
     b: number[];// bet details (game specific array of numbers)
     p: number;  // payout for this single bet
-    ps: string; // payout status
 }
 
 export interface BetHistoryRequest {
@@ -31,11 +32,12 @@ export interface BetHistoryRequest {
 export interface BetHistory {
     txid: string;
     betTime: number;
+    error: string; // TODO this might change to an error code number
     assetCode: string;
     assetName: string;
     betRequest: BetHistoryRequest;
     betPayout: number; // Total payout
-    betResult: BetResult; // null if result is still pending
+    betResult: BetResult; // null
 }
 
 export interface BetConfig {
