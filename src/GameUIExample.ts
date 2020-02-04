@@ -17,13 +17,12 @@ class GameUIExample {
      * Handler to receive incoming bet result from parent app
      */
     private handleBetResultEvent(evt: any) {
-        console.log('betResult event data', evt.detail);
+        console.log('bet results', evt.detail);
 
         // Call the processBetResults() method in the manager class that
         // extends GameManager to process the bet results and prepare data
         // in a format that the game UI understands
 
-        const betResults = JSON.parse(evt.detail);
-        // const betResultUIData: any = GameXYZManager.processBetResults(betResults);
+        // const betResultUIData: any = GameXYZManager.processBetResults(evt.detail);
     }
 }
