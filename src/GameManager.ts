@@ -1,5 +1,7 @@
 export interface BetItem {
-    q: number;  // quantity
+    q: number;  // quantity in fiat
+    qc: number; // quantity in crypto
+    fs: string; // 3 char fiat symbol, ex USD, CNY
     b: number[];// bet details
 }
 
@@ -20,6 +22,7 @@ export interface BetResult {
 export interface BetHistoryItem {
     q: number;  // bet quantity in fiat
     qc: number;  // bet quantity in crypto
+    fs: string; // fiat symbol
     b: number[];// bet details (game specific array of numbers)
     p: number;  // payout for this single bet
 }
@@ -43,6 +46,7 @@ export interface BetHistory {
 export interface BetConfig {
     minbet: number;
     maxbet: number;
+    language_code: string; // en-us, zh-cn, zh-hk, etc.
     gameSpecific: any; // For Roulette the gameSpecific.isAmericanRoulette field is populated
 }
 
