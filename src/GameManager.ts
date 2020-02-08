@@ -90,7 +90,7 @@ export abstract class GameManager {
      */
     public async placeBet(betRequest: BetRequest): Promise<boolean> {
         if (betRequest.b.length > 0) {
-            const response = await this.sendMessage("placeBet", JSON.stringify(betRequest));
+            const response = await this.sendMessage("placeBet", betRequest);
             return response.confirm;
         } else {
             return false;
@@ -125,7 +125,7 @@ export abstract class GameManager {
      */
     public saveFavoriteBets(bets: BetRequest[]) {
         if (bets.length > 0) {
-            this.sendMessage("saveFavoriteBets", JSON.stringify(bets));
+            this.sendMessage("saveFavoriteBets", bets);
         }
     }
 
