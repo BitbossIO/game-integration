@@ -1,7 +1,5 @@
 export interface BetItem {
-    q: number;  // quantity in fiat
-    qc: number; // quantity in crypto
-    fs: string; // 3 char fiat symbol, ex USD, CNY
+    q: number;  // quantity in crypto
     b: number[];// bet details
 }
 
@@ -14,15 +12,16 @@ export interface BetRequest {
 // Results of a bet including cards/dice/wheel/ball result and the payout
 export interface BetResult {
     r: any; // results from game service, ex cards drawn from deck
+    t: number; // Timestamp for when the result was processed
     d: string; // game instance id
     p: number; // total payout
     gs: any; //A game service can pass back raw json data to game client
 }
 
 export interface BetHistoryItem {
-    q: number;  // bet quantity in fiat
-    qc: number;  // bet quantity in crypto
-    fs: string; // fiat symbol
+    q: number;  // bet quantity in crypto
+    c: number;  // conversion rate to fiat
+    fs: string; // fiat symbol that was used for bet
     b: number[];// bet details (game specific array of numbers)
     p: number;  // payout for this single bet
 }
