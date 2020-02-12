@@ -161,6 +161,13 @@ export abstract class GameManager {
         this.sendMessage("clearGameState", {});
     }
 
+    /**
+     * Launches specified url in device browser
+     * @param url
+     */
+    public launchURL(url: string) {
+        this.sendMessage("launchURL", url);
+    }
 
     /*
      * Called by the game screen exit/home button to tell the parent app
