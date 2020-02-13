@@ -11,6 +11,7 @@ export interface BetRequest {
 
 // Results of a bet including cards/dice/wheel/ball result and the payout
 export interface BetResult {
+    txid: string; // Transaction id of the bet result
     r: any; // results from game service, ex cards drawn from deck
     t: number; // Timestamp for when the result was processed
     d: string; // game instance id
