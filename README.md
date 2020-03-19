@@ -2,9 +2,9 @@
 ![BitBoss Logo](https://user-images.githubusercontent.com/2952481/71929859-c8dc0680-3157-11ea-8335-27979acd2d40.png)
 
 ## Overview
-This document describes how a content provider integrates an html5 game into the BitBoss mobile wallet application.  The BitBoss app runs on Android and iOS.  It launches games within a webview and therefore the game must be built with html5 and javascript/typescript.  Our app communicates with the game using DOM window events.
+This document describes how a content provider integrates an html5 game into the BitBoss mobile wallet app.  The BitBoss app runs on Android and iOS.  It launches games within a webview and therefore the game must be built with html5 and javascript/typescript.  The app communicates with the game using DOM window events.
 
-Here is a demo that we created using Bitcoin SV and Tokenized to place bets on the blockchain with tokens.  It shows a simple mobile app with a html5 embedded baccarat game being launched.  Our initial integration with content providers will use native BSV, but the concept is exactly the same.  https://youtu.be/IAMzM7NKsOA
+Here is a demo of a Baccarat html/javascript game that is embedded in the BitBoss app.  All bets and payouts are done using Bitcoin SV in real time.  https://vimeo.com/394213215  
 
 ## Architecture
 This diagram shows the high level flow in our platform:
@@ -14,23 +14,24 @@ This diagram shows the high level flow in our platform:
 * A game gets balance information from the BitBoss app and it calls the BitBoss app to submit a bet
 * The BitBoss mobile app sends bets and funds (BSV) to the blockchain
 * A game service specific to a type of game play detects blockchain bet transactions sent to it
-* The game service produces randomness and process the bet
+* The game service produces randomness and processes the bet
 * The game service uses an Oracle for external public information such as a lottery drawing result
-* The game service calls into a proprietary math model by calling a compiled binary library that is provided to BitBoss by the content provider, for example a model for a Slot game
-* The game service sends commissions to the affiliate and content providers
+* The game service calls into a proprietary math model by calling a compiled binary library that is provided to BitBoss by the content provider.  This is only used for certain game types such as Slots
+* The game service sends commissions (in BSV) to the affiliate and content providers
 * The casino gets the funds that are not won by the player
 * The bet result and any payout (BSV) is sent back to the player’s app via the blockchain
 
 ## Client Game
-The game implements a “manager” typescript class that extends the GameManager base class shown below.  This is the implementation for communicating between the game and the BitBoss app.  This manager class gets called by the game UI code to do things like:
+The game implements a “manager” typescript class that extends the GameManager base class shown below.  This is the implementation for communicating between the game and the BitBoss mobile wallet app.  This manager class gets called by the game UI code to do things like:
 
-* Get the player’s current balance (with proper denomination, for example BSV)
+* Get the player’s current balance in the currency configured in the game wallet (USD, BSV, etc.)
 * Get the min and max bet limits that are allowed
-* Place a bet or set of bets
+* Get the player's preferred language
+* Place a bet or a set of bets
 * Process the bet results once they come back from the blockchain
-* Get bet history details
-* Get and set favorite bets (if the game supports this functionality, it isn’t required for the integration.
-* Exit the game and return to the BitBoss mobile app
+* Get prior bet and payout information to show on a history screen
+* Get and set favorite bets
+* Exit the game and return to the BitBoss app
 
 The npm package for this GitHub project is located at: https://www.npmjs.com/package/@bitboss/game-integration.  
 
@@ -50,7 +51,7 @@ saveGameState | Saves game specific state data to local storage
 getGameState | Retrieves game state data from local storage
 clearGameState | Clears all game state data for the game
 exitGame | Call this method from the game UI to exit back to the BitBoss app
-
+launchURL | Sends the player to an external website, for example a provably fair page
 
 ### Example Game UI Class
 The [GameUIExample](https://github.com/BitbossIO/game-integration/blob/master/src/GameUIExample.ts) class shows an example of how to register a callback handler to receive bet results once the BitBoss app receives them from the blockchain.
@@ -61,7 +62,7 @@ The [GameUIExample](https://github.com/BitbossIO/game-integration/blob/master/sr
 The game service is a smart contract that reacts to bet transactions sent to its address on the Bitcoin SV blockchain.  BitBoss creates a game service for every game type: Baccarat, Slots, Lottery, Roulette, etc. and deploys high available instances of each required game service that a casino wants to run.
 
 ### Oracle Services
-The game service processes incoming bets sent to it using RNG that it creates.  It may need to call out to an Oracle service to get external information such as a public lottery drawing result.  
+An Oracle service provides data not generated by the casino that is needed for a game, for example the result of a public lottery drawing.  The game service can call an Oracle to get such data while processing a bet result.  
 
 ### Content Provider Modules
 The game service may also need to invoke a content provider’s proprietary logic that is required to produce the game results.  An example of this would be the math model for a Slot game.   For this case a local web service is configured with the game server that has the ability to call into the content provider’s code/logic which has been compiled into a software module.  The game service sends over the RNG and the content provider’s module returns the game result. 
