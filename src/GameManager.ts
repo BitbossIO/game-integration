@@ -16,6 +16,7 @@ export interface BetResult {
     t: number; // Timestamp for when the result was processed
     d: string; // game instance id
     p: number; // total payout
+    pf: number; // total payout in fiat
     gs: any; //A game service can pass back raw json data to game client
 }
 
