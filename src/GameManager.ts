@@ -6,6 +6,7 @@ export interface BetItem {
 // Used to place bets by sending request to parent app
 export interface BetRequest {
     d: string;  // game instance id
+    t: number; // Time in seconds that bet was submitted from client
     b: BetItem[];
 }
 
