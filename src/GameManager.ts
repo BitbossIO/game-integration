@@ -8,6 +8,8 @@ export interface BetRequest {
     d: string;  // game instance id
     t: number; // Time in seconds that bet was submitted from client
     b: BetItem[];
+    c: number; // conversion rate displayed to user when bet was placed
+    fc: string; // fiat code (ex: USD) in use when bet was placed
 }
 
 // Results of a bet including cards/dice/wheel/ball result and the payout
