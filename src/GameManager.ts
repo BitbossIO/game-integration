@@ -1,5 +1,5 @@
 export interface BetItem {
-    q: number;  // quantity in crypto
+    q: number;  // quantity -- for submitting a bet this is crypto, for fav bets this is fiat
     b: number[];// bet details
 }
 
@@ -10,6 +10,11 @@ export interface BetRequest {
     b: BetItem[];
     c: number; // conversion rate displayed to user when bet was placed
     fc: string; // fiat code (ex: USD) in use when bet was placed
+}
+
+export interface FavoriteBets {
+    i: number; // 0-based index of saved bet
+    b: BetItem[];
 }
 
 // Results of a bet including cards/dice/wheel/ball result and the payout
