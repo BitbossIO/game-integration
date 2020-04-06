@@ -132,7 +132,7 @@ export abstract class GameManager {
      * Uses sendMessage to send the favorite bet list to the parent app
      * for storage.  The parent app overwrites any previously saved favorites
      */
-    public saveFavoriteBets(bets: BetRequest[]) {
+    public saveFavoriteBets(bets: FavoriteBets[]) {
         if (bets.length > 0) {
             this.sendMessage("saveFavoriteBets", bets);
         }
@@ -141,8 +141,8 @@ export abstract class GameManager {
     /* 
      * Retrieves favorite bets from the parent app
      */
-    public async getFavoriteBets(): Promise<BetRequest[]> {
-        const favBets: BetRequest[] = await this.sendMessage("getFavoriteBets", null);
+    public async getFavoriteBets(): Promise<FavoriteBets[]> {
+        const favBets: FavoriteBets[] = await this.sendMessage("getFavoriteBets", null);
         return favBets;
     }
 
