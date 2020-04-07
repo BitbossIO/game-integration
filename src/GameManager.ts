@@ -15,6 +15,7 @@ export interface BetRequest {
 export interface FavoriteBets {
     i: number; // 0-based index of saved bet
     b: BetItem[];
+    sn: number[]; // game table data for recreating fav bet
 }
 
 // Results of a bet including cards/dice/wheel/ball result and the payout
