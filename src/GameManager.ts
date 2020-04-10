@@ -39,7 +39,10 @@ export interface BetHistoryItem {
 
 export interface BetHistoryRequest {
     d: string; // game instance id, for example drawId for lottery
+    t: number; // Time in seconds that bet was submitted from client
     b: BetHistoryItem[];
+    c: number; // conversion rate displayed to user when bet was placed
+    fc: string; // fiat code (ex: USD) in use when bet was placed
 }
 
 export interface BetHistory {
