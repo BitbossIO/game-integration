@@ -57,10 +57,17 @@ export interface BetHistory {
 }
 
 export interface BetConfig {
-    minbet: number;
-    maxbet: number;
+    total_maxbet: number; // Total max bet allowed when submitting to blockchain
+    minbet: number; // default minimum per bet amount
+    maxbet: number; // default maximum per bet amount
     language_code: string; // en-us, zh-cn, zh-hk, etc.
-    gameSpecific: any; // For Roulette the gameSpecific.isAmericanRoulette field is populated
+    gameSpecific: any;
+}
+
+export interface BetMinMaxOverride {
+    betType: number; // Bet Type - this corresponds to a game specific enum value
+    minbet: number; // minimum per bet amount for this type
+    maxbet: number; // maximum per bet amount for this type
 }
 
 export class BalanceInfo {
