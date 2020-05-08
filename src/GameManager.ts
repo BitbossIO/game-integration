@@ -10,6 +10,7 @@ export interface BetRequest {
     b: BetItem[];
     c: number; // conversion rate displayed to user when bet was placed
     fc: string; // fiat code (ex: USD) in use when bet was placed
+    gt: string; // game title for games that have multiple offerings
 }
 
 export interface FavoriteBets {
@@ -43,6 +44,7 @@ export interface BetHistoryRequest {
     b: BetHistoryItem[];
     c: number; // conversion rate displayed to user when bet was placed
     fc: string; // fiat code (ex: USD) in use when bet was placed
+    gt: string; // game title
 }
 
 export interface BetHistory {
