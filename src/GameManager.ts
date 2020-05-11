@@ -11,7 +11,7 @@ export interface BetRequest {
     c: number; // conversion rate displayed to user when bet was placed
     fc: string; // fiat code (ex: USD) in use when bet was placed
     gt: string; // game title for games that have multiple offerings
-    pf: string; // provably fair token
+    pf: PfToken; // provably fair token
 }
 
 export interface FavoriteBets {
@@ -46,7 +46,7 @@ export interface BetHistoryRequest {
     c: number; // conversion rate displayed to user when bet was placed
     fc: string; // fiat code (ex: USD) in use when bet was placed
     gt: string; // game title
-    pf: string; // provably fair token
+    pf: PfToken; // provably fair token
 }
 
 export interface BetHistory {
@@ -86,6 +86,10 @@ export class BalanceInfo {
     }
 }
 
+export interface PfToken {
+    p: string; // hex of public key
+    i: number; // index of xpubkey
+}
 
 export abstract class GameManager {
     g_cachedBetHistory: BetHistory[] = [];
