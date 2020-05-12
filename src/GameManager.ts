@@ -1,6 +1,9 @@
 export interface BetItem {
-    q: number;  // quantity -- for submitting a bet this is crypto, for fav bets this is fiat
-    b: number[];// bet details
+    q: number;  // bet quantity in crypto
+    c: number;  // conversion rate to fiat
+    fs: string; // fiat symbol that was used for bet
+    b: number[];// bet details (game specific array of numbers)
+    p: number;  // payout for this single bet
 }
 
 // Used to place bets by sending request to parent app
@@ -31,31 +34,13 @@ export interface BetResult {
     gs: any; //A game service can pass back raw json data to game client
 }
 
-export interface BetHistoryItem {
-    q: number;  // bet quantity in crypto
-    c: number;  // conversion rate to fiat
-    fs: string; // fiat symbol that was used for bet
-    b: number[];// bet details (game specific array of numbers)
-    p: number;  // payout for this single bet
-}
-
-export interface BetHistoryRequest {
-    d: string; // game instance id, for example drawId for lottery
-    t: number; // Time in seconds that bet was submitted from client
-    b: BetHistoryItem[];
-    c: number; // conversion rate displayed to user when bet was placed
-    fc: string; // fiat code (ex: USD) in use when bet was placed
-    gt: string; // game title
-    pf: PfToken; // provably fair token
-}
-
 export interface BetHistory {
     txid: string;
     betTime: number;
     error: string; // TODO this might change to an error code number
     assetCode: string;
     assetName: string;
-    betRequest: BetHistoryRequest;
+    betRequest: BetRequest;
     betPayout: number; // Total payout
     betResult: BetResult; // null
 }
