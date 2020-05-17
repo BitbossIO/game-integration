@@ -63,11 +63,13 @@ export class BalanceInfo {
     balance: number;
     assetCode: string;
     assetName: string;
+    fiatConv: number; // Fiat conversion factor
 
     constructor(bal: number) {
         this.balance = bal;
         this.assetCode = 'BSV';
         this.assetName = 'BSV';
+        this.fiatConv = 1;
     }
 }
 
