@@ -74,8 +74,9 @@ export class BalanceInfo {
 }
 
 export interface PfToken {
-    p: string; // hex of public key
-    i: number; // index of xpubkey
+    u: string; // user
+    i: number; // index
+    a: string; // proof/public key
 }
 
 export abstract class GameManager {
