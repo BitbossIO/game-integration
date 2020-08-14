@@ -3,7 +3,8 @@ export interface BetItem {
     c: number;  // conversion rate to fiat
     fs: string; // fiat symbol that was used for bet
     b: number[];// bet details (game specific array of numbers)
-    p: number;  // payout for this single bet
+    p: number;  // payout for this single bet]
+    a: number; // The game action being taken
 }
 
 // Used to place bets by sending request to parent app
@@ -15,6 +16,7 @@ export interface BetRequest {
     fc: string; // fiat code (ex: USD) in use when bet was placed
     gt: string; // game title for games that have multiple offerings
     pf: PfToken; // provably fair token
+    r: string; // Previous response txid for games with multiple transactions
 }
 
 export interface FavoriteBets {
