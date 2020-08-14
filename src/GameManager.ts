@@ -15,7 +15,7 @@ export interface BetRequest {
     c: number; // conversion rate displayed to user when bet was placed
     fc: string; // fiat code (ex: USD) in use when bet was placed
     gt: string; // game title for games that have multiple offerings
-    pf: PfToken; // provably fair token
+    pf: any; // provably fair token
     r?: string; // Previous response txid for games with multiple transactions
 }
 
@@ -73,12 +73,6 @@ export class BalanceInfo {
         this.assetName = 'BSV';
         this.fiatConv = 1;
     }
-}
-
-export interface PfToken {
-    u: string; // user
-    i: number; // index
-    a: string; // proof/public key
 }
 
 export abstract class GameManager {
