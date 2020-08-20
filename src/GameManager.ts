@@ -39,12 +39,13 @@ export interface BetResult {
 export interface BetHistory {
     txid: string;
     betTime: number;
-    error: string; // TODO this might change to an error code number
+    error: string;
     assetCode: string;
     assetName: string;
     betRequest: BetRequest;
     betPayout: number; // Total payout
-    betResult: BetResult; // null
+    betResult: BetResult;
+    priorBetEvents?: any[];
 }
 
 export interface BetConfig {
