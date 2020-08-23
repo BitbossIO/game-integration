@@ -52,8 +52,9 @@ export interface BetConfig {
     total_maxbet: number; // Total max bet allowed when submitting to blockchain
     minbet: number; // default minimum per bet amount
     maxbet: number; // default maximum per bet amount
-    language_code: string; // en-us, zh-cn, zh-hk, etc.
+    language_code: string; // en-us, zh-cn, ja, etc.
     gameSpecific: any;
+    provablyFairRootUrl: string;
 }
 
 export interface BetMinMaxOverride {
