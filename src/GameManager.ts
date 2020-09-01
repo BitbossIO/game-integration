@@ -133,6 +133,10 @@ export abstract class GameManager {
         return historyData;
     }
 
+    public resumeActiveGame() {
+        this.sendMessage("resumeActiveGame", null);
+    }
+
     /* 
      * Uses sendMessage to send the favorite bet list to the parent app
      * for storage.  The parent app overwrites any previously saved favorites
