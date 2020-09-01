@@ -5,6 +5,7 @@ export interface BetItem {
     b: number[];// bet details (game specific array of numbers)
     p: number;  // payout for this single bet]
     a?: number; // The game action being taken
+    qi?: boolean; // Use the same satoshis quantity as initial bet
 }
 
 // Used to place bets by sending request to parent app
