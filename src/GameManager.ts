@@ -6,6 +6,7 @@ export interface BetItem {
     p: number;  // payout for this single bet]
     a?: number; // The game action being taken
     qi?: boolean; // Use the same satoshis quantity as initial bet
+    qf?: number; // Do not allow satoshis quantity to exceed this specified factor
 }
 
 // Used to place bets by sending request to parent app
