@@ -135,6 +135,11 @@ export abstract class GameManager {
         return historyData;
     }
 
+    /**
+     * Client can call to determine if an active game is already in progress.  Only relevant for
+     * multiple action games such as poker or blackjack.  If an active game is in progress, the BitBoss
+     * gaming wallet will respond with a betResult event.
+     */
     public resumeActiveGame() {
         this.sendMessage("resumeActiveGame", null);
     }
