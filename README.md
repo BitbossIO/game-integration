@@ -4,7 +4,7 @@
 ## Overview
 This document describes how a content provider integrates an html5 game into the BitBoss mobile wallet app.  The BitBoss app runs on Android and iOS.  It launches games within a webview and therefore the game must be built with html5 and javascript/typescript.  The app communicates with the game using DOM window events.
 
-Here is a demo of a Baccarat html/javascript game that is embedded in the BitBoss app.  All bets and payouts are done using Bitcoin SV in real time.  https://vimeo.com/394213215  
+Here is a demo of a Baccarat html/javascript game that is embedded in the BitBoss app.  All bets and payouts are done using BitcoinSV in real time.  https://vimeo.com/394213215  
 
 ## Architecture
 This diagram shows the high level flow in our platform:
