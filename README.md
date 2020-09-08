@@ -45,6 +45,7 @@ getBetConfiguration | Get configuration details such as the minimum and maximum 
 placeBet | Send bet(s) to the Bitboss app to be sumbitted to the blockchain
 processBetResults | This method must be overridden, it's used in the callback when receiving bet results
 getHistory | Bet history for each bet placed and the corresponding results
+resumeActiveGame | Resume a game in progress - the gaming wallet wil responsd with a betResult event if there is an active game underway
 saveFavoriteBets | Save favorite bet information in the mobile app local storage
 getFavoriteBets | Retreive any stored favorite bets
 saveGameState | Saves game specific state data to local storage
