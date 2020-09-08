@@ -4,7 +4,7 @@
 ## Overview
 This document describes how a content provider integrates an html5 game into the BitBoss mobile wallet app.  The BitBoss app runs on Android and iOS.  It launches games within a webview and therefore the game must be built with html5 and javascript/typescript.  The app communicates with the game using DOM window events.
 
-Here is a demo of a Baccarat html/javascript game that is embedded in the BitBoss app.  All bets and payouts are done using Bitcoin SV in real time.  https://vimeo.com/394213215  
+Here is a demo of a Baccarat html/javascript game that is embedded in the BitBoss app.  All bets and payouts are done using BitcoinSV in real time.  https://vimeo.com/394213215  
 
 ## Architecture
 This diagram shows the high level flow in our platform:
@@ -45,6 +45,7 @@ getBetConfiguration | Get configuration details such as the minimum and maximum 
 placeBet | Send bet(s) to the Bitboss app to be sumbitted to the blockchain
 processBetResults | This method must be overridden, it's used in the callback when receiving bet results
 getHistory | Bet history for each bet placed and the corresponding results
+resumeActiveGame | Resume a game in progress - the gaming wallet wil responsd with a betResult event if there is an active game underway
 saveFavoriteBets | Save favorite bet information in the mobile app local storage
 getFavoriteBets | Retreive any stored favorite bets
 saveGameState | Saves game specific state data to local storage
