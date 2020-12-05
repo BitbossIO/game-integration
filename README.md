@@ -45,7 +45,7 @@ getBetConfiguration | Get configuration details such as the minimum and maximum 
 placeBet | Send bet(s) to the Bitboss app to be sumbitted to the blockchain
 processBetResults | This method must be overridden, it's used in the callback when receiving bet results
 getHistory | Bet history for each bet placed and the corresponding results
-resumeActiveGame | Resume a game in progress - the gaming wallet wil responsd with a betResult event if there is an active game underway
+resumeActiveGame | Resume a game in progress - the gaming wallet wil respond with a betResult event if there is an active game underway.  This is used for multi-action games like Blackjack.
 saveFavoriteBets | Save favorite bet information in the mobile app local storage
 getFavoriteBets | Retreive any stored favorite bets
 saveGameState | Saves game specific state data to local storage
@@ -72,4 +72,4 @@ The game service may also need to invoke a content provider’s proprietary logi
 The game service packages the bet result and a payout (if the player won the bet) and sends in a transaction to the blockchain addressed to the player’s wallet.  The game service will also pay affiliates and content providers their commission when processing each bet.  The content provider will have their own BSV crypto wallet to receive payments.
 
 ### Bet Result to Client
-The BitBoss mobile app reacts to the bet result transaction and sends it to the embedded game to then show the game result in the UI.  At the same time the player’s crypto wallet balance is updated to show any payouts received.
+The BitBoss mobile app reacts to the bet result transaction and sends it to the embedded game to then show the game result in the UI.  At the same time the player’s crypto wallet balance is updated to show any payouts received.  If your game receives a "betResult" event with a null payload, this indicates that a timeout has occured waiting for the results to appear on the blockchain.  What you do in this case depends on the game, but the standard behavior would be to stop your wait animation or reel spin.  When the result is eventually processed, it will show up in your game history.
